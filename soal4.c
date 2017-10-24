@@ -41,7 +41,9 @@ int main(void)
 	int i=0;
 	int err;
 	int temp1,temp2;
+	char* gapenting[33];
 	char temp;
+	scanf("%s",&gapenting);
 	if(temp!='\n')
 	do
 	{ 
