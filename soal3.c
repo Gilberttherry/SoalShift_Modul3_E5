@@ -8,7 +8,7 @@
 int lohan =100;
 int kepiting = 100;
 
-pthread_t kuy[6];
+pthread_t kuy[3];
 
 void* hewanku(void *agr)
 {
@@ -21,7 +21,7 @@ void* hewanku(void *agr)
 		if(lohan>100 || kepiting >100 || lohan <=0 ||kepiting >100)
 		{
 			printf("Maaf Game Selesai\n");
-			break;
+			exit(EXIT_FAILURE);
 		}
 	}
 	else if(pthread_equal(id,kuy[1]))
@@ -31,7 +31,7 @@ void* hewanku(void *agr)
 		if(lohan>100 || kepiting >100 || lohan <=0 ||kepiting >100)
 		{
 			printf("Maaf Game Selesai\n");
-			break;
+			exit(EXIT_FAILURE);
 		}
 	}
 	else if(pthread_equal(id,kuy[2]))
@@ -39,6 +39,7 @@ void* hewanku(void *agr)
 		printf("Kondisi Lohan : %d\n",lohan);
 		printf("Kondisi Kepiting : %d\n",kepiting);
 	}
+}
 void menu();
 int main()
 {
@@ -60,11 +61,23 @@ int main()
 			else if(pilih_menu==2)
 			{
 				lohan+=10;
+				if (lohan<=0 || lohan>100 || kepiting <=0 || kepiting >100)
+				{
+					printf("Game Over\n");
+				}
 			}
 			else if(pilih_menu==3)
 			{
 				kepiting+=10;
+				if (lohan<=0 || lohan>100 || kepiting <=0 || kepiting >100)
+				{
+					printf("Game Over\n");
+				}
 			}
+		}
+		else if (lohan<=0 || lohan>100 || kepiting <=0 || kepiting >100)
+		{
+			printf("Game Over\n");
 		}
 	}
 }
