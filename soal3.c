@@ -43,7 +43,7 @@ void menu();
 int main()
 {
 
-	int err,err1;	
+	int err,err1,err2;	
 	int pilih_menu;
 	err=pthread_create(&(kuy[0]),NULL,&hewanku,NULL);
 	err1=pthread_create(&(kuy[1]),NULL,&hewanku,NULL);
@@ -53,6 +53,10 @@ int main()
 		{
 			menu();
 			scanf("%d",&pilih_menu);
+			if(pilih_menu==1)
+			{
+				err2=pthread_create(&(kuy[2]),NULL,&hewanku,NULL);
+			}
 		}
 	}
 }
