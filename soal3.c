@@ -37,7 +37,7 @@ void* hewanku(void *agr)
 	else if(pthread_equal(id,kuy[2]))
 	{
 		printf("Kondisi Lohan : %d\n",lohan);
-		printf("Kondisi Kepiting : %d\n",kepiting);
+		printf("Kondisi Kepiting : %d\n\n",kepiting);
 	}
 }
 void menu();
@@ -50,7 +50,12 @@ int main()
 	err1=pthread_create(&(kuy[1]),NULL,&hewanku,NULL);
 	while(1)
 	{		
-		if(lohan>=0 && lohan<=100 || kepiting>=0 && kepiting <=100)
+		if (lohan<=0 || lohan>100 || kepiting <=0 || kepiting >100)
+		{
+			printf("Game Over\n");
+			break;
+		}		
+		else
 		{
 			menu();
 			scanf("%d",&pilih_menu);
@@ -61,29 +66,18 @@ int main()
 			else if(pilih_menu==2)
 			{
 				lohan+=10;
-				if (lohan<=0 || lohan>100 || kepiting <=0 || kepiting >100)
-				{
-					printf("Game Over\n");
-				}
 			}
 			else if(pilih_menu==3)
 			{
 				kepiting+=10;
-				if (lohan<=0 || lohan>100 || kepiting <=0 || kepiting >100)
-				{
-					printf("Game Over\n");
-				}
 			}
 		}
-		else if (lohan<=0 || lohan>100 || kepiting <=0 || kepiting >100)
-		{
-			printf("Game Over\n");
-		}
+
 	}
 }
 void menu()
 {
 	printf("1.Status\n");
 	printf("2.Feed Lohan\n");
-	printf("3.Feed Kepiting\n");
+	printf("3.Feed Kepiting\n\n");
 }
