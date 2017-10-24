@@ -23,6 +23,26 @@ void* hewanku(void *agr)
 			printf("Maaf Game Selesai\n");
 			break;
 		}
+		else
+		{
+			printf("Status Lohan -> %d\n",lohan);
+			printf("Status Kepiting -> %d\n",kepiting);
+		}
+	}
+	else if(pthread_equal(id,kuy[1]))
+	{
+		sleep(20);
+		kepiting-=10;
+		if(lohan>100 || kepiting >100 || lohan <=0 ||kepiting >100)
+		{
+			printf("Maaf Game Selesai\n");
+			break;
+		}
+		else
+		{
+			printf("Status Lohan -> %d\n",lohan);
+			printf("Status Kepiting -> %d\n",kepiting);
+		}
 	}
 void menu();
 int main()
@@ -40,9 +60,4 @@ int main()
 		}
 	}
 }
-void menu()
-{
-	printf("1.Status\n");
-	printf("2.Feed Lohan\n");
-	printf("3.Feed Kepiting\n");
-}
+
