@@ -57,6 +57,14 @@ int main()
 			{
 				err2=pthread_create(&(kuy[2]),NULL,&hewanku,NULL);
 			}
+			else if(pilih_menu==2)
+			{
+				lohan+=10;
+			}
+			else if(pilih_menu==3)
+			{
+				kepiting+=10;
+			}
 		}
 	}
 }
