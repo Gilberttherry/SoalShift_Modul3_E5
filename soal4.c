@@ -13,22 +13,26 @@ void* playAndCount(void *arg)
 	x=0;
 	int *bil = arg;
 	int hasil=1;
-	if(angka[*bil]!=0)
+	if(angka[*bil]>=0)
 	{
-		for(int i=2;i<=angka[*bil];i++)
+		if(angka[*bil]>0)
 		{
-			hasil*=i;
+			for(int i=2;i<=angka[*bil];i++)
+			{
+				hasil*=i;
+			}
 		}
-	}
-	else if(angka[*bil]==1)
-	{
-		hasil=1;
+		else if(angka[*bil]==1)
+		{
+			hasil=1;
+		}
+		printf("Hasil %d! = %d\n",angka[*bil],hasil);
 	}
 	else
 	{
-		
+		printf("Hasil %d! = tidak terdefenisi\n",angka[*bil]);
+	}
 	x=1;
-	printf("Hasil %d! = %d\n",angka[*bil],hasil);
 }
 
 int main(void)
