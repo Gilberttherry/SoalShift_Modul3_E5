@@ -9,19 +9,19 @@ int lohan =100;
 int kepiting = 100;
 
 pthread_t kuy[6];
+
 void* hewanku(void *agr)
 {
 	int i;
 	pthread_t id=pthread_self();
 	if(pthread_equal(id,kuy[0]))
 	{
-		for(i=0;i<1000;i++)
+		sleep(10);
+		lohan-=15;
+		if(lohan>100 || kepiting >100 || lohan <=0 ||kepiting >100)
 		{
-			if((i%10)==0)
-				lohan-=15;
-			else if((i%20)==0)
-				kepiting-=10;			
-			sleep(1);
+			printf("Maaf Game Selesai\n");
+			break;
 		}
 	}
 void menu();
