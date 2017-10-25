@@ -1,42 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-FILE *x1;
-int main()
+pthread_t tid1;
+pthread_t tid2;
+FILE* x1;
+int main(int arg,char *argv[])
 {
-  	char g[10000];
-   	char h[10000];
-   	char arr[100];
-   	char kata[100];
-   	char *z;
-    int x,e=0,i,y,selisih,j,k=0,d;
-	while(1)
-	{
-    	printf("File = ");
-    	scanf("%s",arr);
-    	x1=fopen(arr,"r+");
-    	while(!feof(x1))
-		fgets(g,10000,x1);
-    	printf("Kata = ");
-    	scanf("%s",kata);
-    	strcpy(h,g);
-    	x=strlen(kata);
-    	while(strstr(h,kata)!=0)
-		{
-    		z=strstr(h,kata);
-			y=z-h;
-    		for(i=y;i<=y+x-1;i++)
-			h[i]='*';
-			e++;
-    	}
-    	if(e==0) printf("Tidak Ditemukan\n",kata);
-    	else printf("Ditemukan %d Kata\n",e);
-    	fclose(x1);
-    	system("pause");
-    	break;
-    }
-    return 0;
-}
 
-     
+	pthread_t tid[argc];
+
+	for(int i=1;i<arg;++i)
+	{
+		pthread_create(&(tid[i]), NULL, &strstr_kata,(void *)argv[i]);
+	}
+	for(int i=1;i<arg;++i)
+	{
+		pthread_join(tid[1], NULL);
+	}
+	return 0;
+}
