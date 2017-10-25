@@ -5,7 +5,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-char weapon[6] = {"MP4A1", "PM2-V1", "SPR-3", "SS2-V5", "SPG1-V3", "MINE"};
+char weapon[6][10] = {"MP4A1", "PM2-V1", "SPR-3", "SS2-V5", "SPG1-V3", "MINE"};
 void penjual(int* spek);
 void menu_jual();
 void menu_beli();
@@ -20,7 +20,8 @@ int main()
 void penjual(int* spek)
 {
 	int pilih_jual;
-	spek[6]={'0','0','0','0','0','0'};
+	for(int i=0;i<6;i++)
+		spek[i]=0;
 	char nama[100];
 	int jumlah;
 	while(1)
