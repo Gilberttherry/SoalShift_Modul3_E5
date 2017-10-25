@@ -83,6 +83,7 @@ void pembeli(int* spek)
 			printf("Invalid input try again bro\n");
 	}
 }
+
 void penjual(int* spek)
 {
 	int pilih_jual;
