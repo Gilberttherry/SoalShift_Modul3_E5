@@ -22,8 +22,10 @@ int main()
 	{
 		main_menu();
 		scanf("%d",&role);
-		if(role!=1 || role !=2)
+		if(role<1 || role >2)
 			printf("Invalid input try again bro\n");
+		else if(role==1 || role ==2)
+			break;
 	}
 	if(role==1)
 		pembeli(value);
@@ -43,52 +45,55 @@ void pembeli(int* spek)
 		{
 			for(int i=0;i<6;i++)
 				printf("%s %d\n",weapon[i],spek[i]);
+			printf("\n");
 		}
 		else if(pilih_beli==2)
 		{
+			printf("\n");
 			printf("Nama_senjata jumlah\n");
 			scanf("%s %d",&nama,&jumlah_beli);
+			printf("\n");
 			if(strcmp(nama,"MP4A1")==0)
 			{
 				if(spek[0]>=jumlah_beli)
 					spek[0]-=jumlah_beli;
 				else
-					printf("Maaf jumlah stok barang tidak mencukupi\n");
+					printf("Maaf jumlah stok barang tidak mencukupi\n\n");
 			}
 			else if(strcmp(nama,"PM2-V1")==0)
 			{
 				if(spek[1]>=jumlah_beli)
 					spek[1]-=jumlah_beli;
 				else
-					printf("Maaf jumlah stok barang tidak mencukupi\n");
+					printf("Maaf jumlah stok barang tidak mencukupi\n\n");
 			}
 			else if(strcmp(nama,"SPR-3")==0)
 			{
 				if(spek[2]>=jumlah_beli)
 					spek[2]-=jumlah_beli;
 				else
-					printf("Maaf jumlah stok barang tidak mencukupi\n");
+					printf("Maaf jumlah stok barang tidak mencukupi\n\n");
 			}
 			else if(strcmp(nama,"SS2-V5")==0)
 			{
 				if(spek[3]>=jumlah_beli)
 					spek[3]-=jumlah_beli;
 				else
-					printf("Maaf jumlah stok barang tidak mencukupi\n");
+					printf("Maaf jumlah stok barang tidak mencukupi\n\n");
 			}
 			else if(strcmp(nama,"SPG1-V3")==0)
 			{
 				if(spek[4]>=jumlah_beli)
 					spek[4]-=jumlah_beli;
 				else
-					printf("Maaf jumlah stok barang tidak mencukupi\n");
+					printf("Maaf jumlah stok barang tidak mencukupi\n\n");
 			}
 			else if(strcmp(nama,"MINE")==0)
 			{
 				if(spek[5]>=jumlah_beli)
 					spek[5]-=jumlah_beli;
 				else
-					printf("Maaf jumlah stok barang tidak mencukupi\n");
+					printf("Maaf jumlah stok barang tidak mencukupi\n\n");
 			}
 		}
 		else
@@ -109,8 +114,10 @@ void penjual(int* spek)
 		scanf("%d",&pilih_jual);
 		if(pilih_jual==1)
 		{
+			printf("\n");
 			printf("Nama_senjata jumlah\n");
 			scanf("%s %d",&nama,&jumlah);
+			printf("\n");
 			if(strcmp(nama,"MP4A1")==0)
 			{
 				spek[0]+=jumlah;
@@ -140,6 +147,7 @@ void penjual(int* spek)
 		{
 			for(int i=0;i<6;i++)
 				printf("%s %d\n",weapon[i],spek[i]);
+			printf("\n");
 		}
 		else
 			printf("Invalid input try agian bro\n");
