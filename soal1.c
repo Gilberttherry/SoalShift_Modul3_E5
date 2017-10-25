@@ -21,8 +21,14 @@ int main()
 	while(1)
 	{
 		main_menu();
+		scanf("%d",&role);
+		if(role!=1 || role !=2)
+			printf("Invalid input try again bro\n");
 	}
-
+	if(role==1)
+		pembeli(value);
+	else if(role==2)
+		penjual(value);
 }
 void pembeli(int* spek)
 {
