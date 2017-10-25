@@ -35,7 +35,7 @@ int main(int temp1,char *argv[])
 	}
 	for(int i=1;i<temp1;++i)
 	{
-		pthread_join(tid[1],NULL);
+		pthread_join(tid[i],NULL);
 	}
 	return 0;
 }
