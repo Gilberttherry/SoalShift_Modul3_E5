@@ -13,7 +13,7 @@ void* strstr_kata(void *arg)
 	char kata1[10];
 	int temp=0;
 	char kata2[256];
-	X1 =fopen("Novel.txt","r");
+	X1 =fopen("novel.txt","r");
 	strcpy(kata1,arg);
 	while(fscanf(X1,"%s",kata2)!=EOF)
 	{
@@ -28,16 +28,14 @@ void* strstr_kata(void *arg)
 
 int main(int temp1,char *argv[])
 {
-
 	pthread_t tid[temp1];
-
 	for(int i=1;i<temp1;++i)
 	{
-		pthread_create(&(tid[i]), NULL, &strstr_kata,(void *)argv[i]);
+		pthread_create(&(tid[i]),NULL,&strstr_kata,(void *)argv[i]);
 	}
 	for(int i=1;i<temp1;++i)
 	{
-		pthread_join(tid[1], NULL);
+		pthread_join(tid[1],NULL);
 	}
 	return 0;
 }
