@@ -25,8 +25,9 @@ void* p1(void *arg)
 {
 	while(1)
 	{
+		printf("Nama : %s\nskor : %d\nNama : %s\nskor : %d\n",player1,nilai1,player2,nilai2);
 		condition=1;
-        	printf("pemain 1,Banyak ranjau(max 16) =>  ");
+        	printf("pemain 1,Banyak ranjau(max 16) => ");
         	scanf("%d",&banyak);
         	for(int i=0;i<banyak;i++)
 		{
@@ -38,24 +39,24 @@ void* p1(void *arg)
 		condition=2;
 		while(condition==2||condition==4)
 		{
-          		if(status==4)
+          		if(condition==4)
 			{
 				return NULL;
 			}
         	}
-        	printf("pemain 1, tebak =>  ");
+        	printf("pemain 1,tebak =>  ");
 		scanf("%d",&ranjau);
-        	if(ladang2[nomor]==0)
+        	if(field2[ranjau]==0)
 		{
-	            	printf("tebakkan %s benar, poin %s ditambah 1\n",name_1,name_1);
-	            	++skor1;
+	            	printf("tebakkan %s benar, poin %s ditambah 1\n",player1,player1);
+	            	++nilai1;
 	        }
 	        else
 		{
-	        	printf("tebakkan %s salah, poin %s ditambah 1\n",name_1,name_2);
-	         	++skor2;
+	        	printf("tebakkan %s salah, poin %s ditambah 1\n",player1,player2);
+	         	++nilai2;
         	}
-        	if(skor1==10 || skor2 == 10 || stok1==0 || stok2==0)
+        	if(nilai1==10 || nilai2 == 10 || stok1==0 || stok2==0)
 		{
 			condition=4;
 			return NULL;
@@ -64,18 +65,60 @@ void* p1(void *arg)
     	return NULL;
 }
 
+void* p2(void *arg)
+{
+	while(1)
+	{
+        	condition=1;
+        	while(condition==1||condition==4)
+		{
+        		if(condition==4)
+			{
+				return NULL;
+			}
+       		}
+        	printf("pemain 2,tebak => ");
+        	scanf("%d",&ranjau);
+        	if(field1[ranjau]==0)
+		{
+    		        printf("tebakkan %s benar, poin %s ditambah 1\n",player2,player2);
+        		++nilai2;
+        	}
+	        else
+		{
+	        	printf("tebakkan %s salah, poin %s ditambah 1\n",player2,player1);
+            		++nilai1;
+        	}
+        	if(nilai1==10 || nilai2== 10 || stok1==0 || stok2==0)
+		{
+			condition=4;
+			return NULL;
+		}
+        	printf("Nama : %s\nskor : %d\nNama : %s\nskor : %d\n",player1,nilai1,player2,nilai2);
+        	printf("pemain 2,Banyak ranjau(max 16) => ");
+        	scanf("%d",&banyak);
+		for(int i=0;i<banyak;i++)
+		{
+			printf("Letakan ranjau di => ");
+	        	scanf("%d",&ranjau);
+            		if(field2[ranjau]==0)stok2--;
+            		field2[ranjau]=1;
+        	}
+        	condition=3;
+	}
+	return NULL;
+
+}
+
+
 int main()
 {
-	printf("Masukan Nama Player1 => ");
-	scanf("%s",&player1);
-	printf("Masukan Nama Player2 => ");
-	scanf("%s",&player2);
 	while(1)
 	{
     		printf("Masukan Nama Player1 => ");
-		scanf("%s",&player1);
+		scanf("%s",player1);
 		printf("Masukan Nama Player2 => ");
-		scanf("%s",&player2);
+		scanf("%s",player2);
     		nilai1=0;
     		nilai2=0;
     		for(int i=1;i<=16;++i)
@@ -88,7 +131,7 @@ int main()
 		pthread_join(tid1, NULL);
 		pthread_join(tid2, NULL);
 		while(condition!=4);
-		printf("Game over\nskor %s : %d\nskor %s : %d\n",name_1,skor1,name_2,skor2);
+		printf("Nama : %s\nskor : %d\nNama : %s\nskor : %d\n",player1,nilai1,player2,nilai2);
 	}
 	return 0;
 }
