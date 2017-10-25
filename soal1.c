@@ -10,12 +10,18 @@ void penjual(int* spek);
 void pembeli(int* spek);
 void menu_jual();
 void menu_beli();
+void main_menu();
 int main()
 {
 	key_t key=1234;
 	int *value;	
 	int shmid=shmget(key,sizeof(int), IPC_CREAT | 0666);
 	value=shmat(shmid,NULL,0);
+	int role;
+	while(1)
+	{
+		main_menu();
+	}
 
 }
 void pembeli(int* spek)
@@ -145,4 +151,11 @@ void menu_beli()
 	printf("1.List Persenjataan\n");
 	printf("2.Beli Senjata\n");
 	printf("Pilih menunya => \n\n");
+}
+void main_menu()
+{
+	printf("Plih Role\n");
+	printf("1.Pembeli\n");
+	printf("2.Penjual\n");
+	printf("Pilih -> \n\n");
 }
